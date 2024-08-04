@@ -97,4 +97,11 @@ gdk component list --template
 # Shows all options to init component
 gdk component init --help
 
+gdk component init -n python-example -l python -t HelloWorld
+# Update the author and version in python-example/gdk-config.json
+
+cd python-example
+# Generate build 
+gdk component build
+
 ```
