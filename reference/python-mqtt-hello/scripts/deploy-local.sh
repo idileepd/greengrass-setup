@@ -40,30 +40,34 @@ echo "Building the Greengrass component..."
 
 # Create deployment and capture the output and status
 echo "Creating deployment..."
-DEPLOYMENT_OUTPUT=$(sudo /greengrass/v2/bin/greengrass-cli deployment create \
+# DEPLOYMENT_OUTPUT=$(sudo /greengrass/v2/bin/greengrass-cli deployment create \
+#   --recipeDir $PWD/greengrass-build/recipes \
+#   --artifactDir $PWD/greengrass-build/artifacts \
+#   --merge "com.example.PythonMqttHello=1.0.0" 2>&1)
+# DEPLOYMENT_STATUS=$?
+sudo /greengrass/v2/bin/greengrass-cli deployment create \
   --recipeDir $PWD/greengrass-build/recipes \
   --artifactDir $PWD/greengrass-build/artifacts \
-  --merge "com.example.PythonMqttHello=1.0.0" 2>&1)
-DEPLOYMENT_STATUS=$?
+  --merge "com.example.PythonMqttHello=1.0.1"
 
-# Check if the deployment failed
-if [ $DEPLOYMENT_STATUS -ne 0 ]; then
-  echo "Deployment failed. Output:"
-  echo "$DEPLOYMENT_OUTPUT"
+# # Check if the deployment failed
+# if [ $DEPLOYMENT_STATUS -ne 0 ]; then
+#   echo "Deployment failed. Output:"
+#   echo "$DEPLOYMENT_OUTPUT"
 
-  # Extract deployment ID from the output
-  echo "Extracting deployment ID from the output..."
-  DEPLOYMENT_ID=$(echo "$DEPLOYMENT_OUTPUT" | grep -oP '(?<=Deployment Id: )[^ ]+')
+#   # Extract deployment ID from the output
+#   echo "Extracting deployment ID from the output..."
+#   DEPLOYMENT_ID=$(echo "$DEPLOYMENT_OUTPUT" | grep -oP '(?<=Deployment Id: )[^ ]+')
 
-  if [ -n "$DEPLOYMENT_ID" ]; then
-    echo "Removing failed deployment with ID: $DEPLOYMENT_ID"
-    sudo /greengrass/v2/bin/greengrass-cli deployment delete --deploymentId $DEPLOYMENT_ID
-  else
-    echo "Failed to extract deployment ID from the output."
-  fi
+#   if [ -n "$DEPLOYMENT_ID" ]; then
+#     echo "Removing failed deployment with ID: $DEPLOYMENT_ID"
+#     sudo /greengrass/v2/bin/greengrass-cli deployment delete --deploymentId $DEPLOYMENT_ID
+#   else
+#     echo "Failed to extract deployment ID from the output."
+#   fi
 
-  exit 1
-else
-  echo "Deployment submitted!"
-  exit 0
-fi
+#   exit 1
+# else
+#   echo "Deployment submitted!"
+#   exit 0
+# fi
