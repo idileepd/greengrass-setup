@@ -22,5 +22,12 @@ Manifests:
       - URI: "s3://BUCKET_NAME/COMPONENT_NAME/COMPONENT_VERSION/python-mqtt-hello.zip"
         Unarchive: ZIP
     Lifecycle:
-      Install: "python3 -m pip install --user -r {artifacts:decompressedPath}/python-mqtt-hello/requirements.txt"
-      Run: "python3 -u {artifacts:decompressedPath}/python-mqtt-hello/main.py \"{configuration:/Message}\""
+      Install: |
+        if [ ! -d "/greengrass-env" ]; then
+          python3 -m venv /greengrass-env
+        fi
+        /greengrass-env/bin/pip install --upgrade pip
+        /greengrass-env/bin/pip install -r {artifacts:decompressedPath}/python-mqtt-hello/requirements.txt
+      Run: |
+        source /greengrass-env/bin/activate
+        python3 -u {artifacts:decompressedPath}/python-mqtt-hello/main.py "{configuration:/Message}"
