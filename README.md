@@ -28,7 +28,7 @@ pip --version
 
 Install GDK (Build and deploy components)
 ```bash 
-pip3 install git+https://github.com/aws-greengrass/aws-greengrass-gdk-cli.git@v1.6.1
+pip3 install git+https://github.com/aws-greengrass/aws-greengrass-gdk-cli.git@v1.6.2
 ```
 Incase of error installing GDK by extenal package dependency
 ```bash
@@ -37,7 +37,10 @@ cd /home/<user>/.local
 # .venu is env name
 python -m venv .venv
 source .venv/bin/activate
-# full path:: source /home/murali/.local/.venv/bin/activate
+# EX: source /home/murali/.local/.venv/bin/activate
+# MAC: source /Users/dileepnagendra/.local/.venv/bin/activate
+
+pip3 install git+https://github.com/aws-greengrass/aws-greengrass-gdk-cli.git@v1.6.2
 gdk --version
 deactivate
 ```
@@ -83,9 +86,15 @@ sudo passwd ggc_user
 ```
 
 
-    - Install Command (This step will be give by aws when adding gg coredevice in aws): ``
-    
-   
+## Create a Component 
 
-1. 
+```bash
+# Get all sample repos available
+gdk component list --repository
+# Get all the templates available
+gdk component list --template
 
+# Shows all options to init component
+gdk component init --help
+
+```
