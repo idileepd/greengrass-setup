@@ -1,0 +1,3 @@
+{
+  "python.pythonPath": "${env:HOME}/.local/.venv/bin/python"
+}

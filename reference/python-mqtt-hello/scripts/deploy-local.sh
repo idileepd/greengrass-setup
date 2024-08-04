@@ -48,7 +48,7 @@ echo "Creating deployment..."
 sudo /greengrass/v2/bin/greengrass-cli deployment create \
   --recipeDir $PWD/greengrass-build/recipes \
   --artifactDir $PWD/greengrass-build/artifacts \
-  --merge "com.example.PythonMqttHello=1.0.1"
+  --merge "com.example.PythonMqttHello=1.0.0"
 
 # # Check if the deployment failed
 # if [ $DEPLOYMENT_STATUS -ne 0 ]; then

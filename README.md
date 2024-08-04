@@ -134,3 +134,12 @@ source .greengrass-env/bin/activate
 sudo /greengrass/v2/bin/greengrass-cli component list
 
 ```
+
+
+
+### Helper commands
+
+```bash
+# to log
+sudo tail -f /greengrass/v2/logs/greengrass.log
+```
