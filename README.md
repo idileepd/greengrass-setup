@@ -130,5 +130,7 @@ python -m venv .greengrass-env
 source .greengrass-env/bin/activate
 # source /home/murali/.local/.greengrass-env/bin/activate
 
+# To Check all the installed components
+sudo /greengrass/v2/bin/greengrass-cli component list
 
 ```
