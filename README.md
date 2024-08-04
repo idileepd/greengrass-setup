@@ -52,6 +52,24 @@ curl -s https://d2s8p88vqu9w66.cloudfront.net/releases/greengrass-nucleus-latest
 ```
 
 
+
+## Raspberry config
+[Set kernel parameters on a Raspberry Pi](https://docs.aws.amazon.com/greengrass/v2/developerguide/getting-started-set-up-environment.html)
+```bash
+#1. Open the /boot/cmdline.txt file. This file specifies Linux kernel parameters to apply when the Raspberry Pi boots.
+#For example, on a Linux-based system, you can run the following command to use GNU nano to open the file.
+sudo nano /boot/cmdline.txt
+
+#2. Verify that the /boot/cmdline.txt file contains the following kernel parameters. The systemd.unified_cgroup_hierarchy=0 parameter specifies to use cgroups v1 instead of cgroups v2.
+
+cgroup_enable=memory cgroup_memory=1 systemd.unified_cgroup_hierarchy=0
+
+#3. If the /boot/cmdline.txt file doesn't contain these parameters, or it contains these parameters with different values, update the file to contain these parameters and values.
+# If you updated the /boot/cmdline.txt file, reboot the Raspberry Pi to apply the changes.
+sudo reboot
+```
+
+
 Install GreenGrass
 ```
 What below command dees:
@@ -103,5 +121,14 @@ gdk component init -n python-example -l python -t HelloWorld
 cd python-example
 # Generate build 
 gdk component build
+
+# NOTE:::: create venv for the python project
+cd /home/<user>/.local
+#EX:  cd /home/murali/.local
+python -m venv .greengrass-env
+
+source .greengrass-env/bin/activate
+# source /home/murali/.local/.greengrass-env/bin/activate
+
 
 ```
