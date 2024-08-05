@@ -55,4 +55,5 @@ Lifecycle:
     source "$ENV_DIR/bin/activate"
 
     echo "Running main.py script"
-    python3 -u {artifacts:decompressedPath}/python-mqtt-hello/main.py "{configuration:/Message}"
+    # python3 -u {artifacts:decompressedPath}/python-mqtt-hello/main.py "{configuration:/Message}"
+    "$ENV_DIR/bin/python3" -u {artifacts:decompressedPath}/python-mqtt-hello/main.py "{configuration:/Message}"
