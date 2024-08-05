@@ -165,4 +165,5 @@ sudo touch /greengrass/ggc/var/log/com.example.PythonMqttHello.log
 
 git reset --hard
 systemctl status greengrass
+sudo /greengrass/v2/bin/greengrass-cli deployment status -i deployment-id
 ```
