@@ -1,3 +1,4 @@
+---
 RecipeFormatVersion: "2020-01-25"
 ComponentName: "{COMPONENT_NAME}"
 ComponentVersion: "{COMPONENT_VERSION}"
@@ -22,14 +23,12 @@ Manifests:
         Unarchive: ZIP
 Lifecycle:
   Install: |
-    # Define variables for user and group
-    USERNAME="${USERNAME:-ggc_user}"
-    GROUP="${GROUP:-ggc_group}"
-
-    # Define the virtual environment directory
-    ENV_DIR="/home/$USERNAME/.local/.greengrass-env"
+    # Fetch the current username
+    USERNAME=$(whoami)
+    echo "Current username: $USERNAME"
 
     # Create the virtual environment in the user's home directory
+    ENV_DIR="/home/$USERNAME/.local/.greengrass-env"
     if [ ! -d "$ENV_DIR" ]; then
       echo "Creating virtual environment at $ENV_DIR"
       python3 -m venv "$ENV_DIR"
@@ -37,23 +36,24 @@ Lifecycle:
       echo "Virtual environment already exists at $ENV_DIR skipping"
     fi
 
-    # Upgrade pip and install dependencies as specified user
+    # Upgrade pip and install dependencies
     echo "Upgrading pip in the virtual environment"
-    sudo -u $USERNAME "$ENV_DIR/bin/pip" install --upgrade pip
+    "$ENV_DIR/bin/pip" install --upgrade pip
 
     echo "Installing dependencies from requirements.txt"
-    sudo -u $USERNAME "$ENV_DIR/bin/pip" install -r {artifacts:decompressedPath}/python-mqtt-hello/requirements.txt
-
+    "$ENV_DIR/bin/pip" install -r {artifacts:decompressedPath}/python-mqtt-hello/requirements.txt
   Run: |
-    # Define variables for user and group
-    USERNAME="${USERNAME:-ggc_user}"
-
-    # Define the virtual environment directory
-    ENV_DIR="/home/$USERNAME/.local/.greengrass-env"
+    # Fetch the current username
+    USERNAME=$(whoami)
+    echo "Current username: $USERNAME"
 
     # Activate the virtual environment and run the script
+    ENV_DIR="/home/$USERNAME/.local/.greengrass-env"
     echo "Activating virtual environment from $ENV_DIR"
     source "$ENV_DIR/bin/activate"
 
     echo "Running main.py script"
     python3 -u {artifacts:decompressedPath}/python-mqtt-hello/main.py "{configuration:/Message}"
+
+
+there is a problem in this script when it is install it is installing on current user running not on ggc_user who is the user that it will run later in run step
