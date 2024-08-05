@@ -145,4 +145,5 @@ sudo tail -f /greengrass/v2/logs/greengrass.log
 sudo tail -f /greengrass/v2/logs/com.example.PythonMqttHello.log
 sudo cat /greengrass/v2/logs/com.example.PythonMqttHello.log
 sudo /greengrass/v2/bin/greengrass-cli component list
+git reset --hard
 ```
