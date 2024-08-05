@@ -140,10 +140,13 @@ sudo /greengrass/v2/bin/greengrass-cli component list
 ### Helper commands
 
 ```bash
-# to log
 sudo tail -f /greengrass/v2/logs/greengrass.log
 sudo tail -f /greengrass/v2/logs/com.example.PythonMqttHello.log
 sudo cat /greengrass/v2/logs/com.example.PythonMqttHello.log
 sudo /greengrass/v2/bin/greengrass-cli component list
+#Restore log in case no log generated or deleted
+sudo touch /greengrass/ggc/var/log/com.example.PythonMqttHello.log
+
 git reset --hard
+systemctl status greengrass
 ```
