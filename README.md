@@ -1,6 +1,6 @@
 # GreenGrass AWS
 
-## Prerequisites
+### Prerequisites
 Setup Tokens
 ```bash
 export AWS_ACCESS_KEY_ID=<AWS_ACCESS_KEY_ID>
@@ -45,7 +45,7 @@ gdk --version
 deactivate
 ```
 
-## Setup GreenGrass Core Device
+### Setup GreenGrass Core Device
 Download installer (This step will be give by aws when adding gg coredevice in aws)
 ```bash
 curl -s https://d2s8p88vqu9w66.cloudfront.net/releases/greengrass-nucleus-latest.zip > greengrass-nucleus-latest.zip && unzip greengrass-nucleus-latest.zip -d GreengrassInstaller
@@ -53,7 +53,7 @@ curl -s https://d2s8p88vqu9w66.cloudfront.net/releases/greengrass-nucleus-latest
 
 
 
-## Raspberry config
+### Raspberry config
 [Set kernel parameters on a Raspberry Pi](https://docs.aws.amazon.com/greengrass/v2/developerguide/getting-started-set-up-environment.html)
 ```bash
 #1. Open the /boot/cmdline.txt file. This file specifies Linux kernel parameters to apply when the Raspberry Pi boots.
@@ -104,7 +104,7 @@ sudo passwd ggc_user
 ```
 
 
-## Create a Component 
+### Create a Component 
 
 ```bash
 # Get all sample repos available
@@ -135,7 +135,23 @@ sudo /greengrass/v2/bin/greengrass-cli component list
 
 ```
 
+### Deploy component locally
+Incase component exists already, remove it
+```bash 
+cd python-mqtt-hello
+sh scripts/remove_local.sh
+```
+Run the deploy
+```bash 
+cd python-mqtt-hello
+sh scripts/deploy_local.sh
+```
 
+### Remove component locally
+```bash 
+cd python-mqtt-hello
+sh scripts/remove_local.sh
+```
 
 ### Helper commands
 
