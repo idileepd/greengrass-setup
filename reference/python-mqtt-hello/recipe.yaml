@@ -23,6 +23,7 @@ Manifests:
         Unarchive: ZIP
 Lifecycle:
   Install: |
+    echo "Lifecycle::::: :::::::: INSTALL"
     # Fetch the current username
     USERNAME=$(whoami)
     echo "Current username: $USERNAME"
@@ -43,6 +44,7 @@ Lifecycle:
     echo "Installing dependencies from requirements.txt"
     "$ENV_DIR/bin/pip" install -r {artifacts:decompressedPath}/python-mqtt-hello/requirements.txt
   Run: |
+    echo "Lifecycle::::: :::::::: RUN"
     # Fetch the current username
     USERNAME=$(whoami)
     echo "Current username: $USERNAME"
