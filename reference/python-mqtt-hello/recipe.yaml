@@ -56,6 +56,3 @@ Lifecycle:
 
     echo "Running main.py script"
     python3 -u {artifacts:decompressedPath}/python-mqtt-hello/main.py "{configuration:/Message}"
-
-
-there is a problem in this script when it is install it is installing on current user running not on ggc_user who is the user that it will run later in run step
