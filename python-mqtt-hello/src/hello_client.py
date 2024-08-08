@@ -29,7 +29,7 @@ class HelloClient:
         # Handle the subscription response
         try:
             response = self._subscription.get_response().result(timeout=5.0)
-            print(":::::Successfully subscribed to 'hello' topic.")
+            print(":::::Successfully subscribed to 'hello' topic.", response)
         except Exception as e:
             print("Failed to subscribe to 'hello' topic:", e)
 
