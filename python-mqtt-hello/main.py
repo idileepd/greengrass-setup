@@ -2,6 +2,7 @@ import sys
 import time
 import datetime
 from src.hello_client import HelloClient
+import logging
 
 
 def main():
@@ -9,6 +10,7 @@ def main():
         args = sys.argv[1:]
         client = HelloClient(args[0])
 
+        print("")
         # Subscribe to the 'hello' topic
         client.subscribe()
 
@@ -18,8 +20,8 @@ def main():
             client.tick()
             time.sleep(5)
             times = times - 1
-    except:
-        print("Eror occured")
+    except Exception as e:
+        logging.error("\n\n>>>error:::", e)
 
 
 if __name__ == "__main__":
