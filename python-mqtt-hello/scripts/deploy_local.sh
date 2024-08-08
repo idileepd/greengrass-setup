@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Navigate to the script's directory
-echo -e "\n1. Setup dir and activating python and setup green grass"
+echo "\n1. Setup dir and activating python and setup green grass"
 cd "$(dirname "$0")"/..
 
-echo -e "Deleting previous builds"
+echo "Deleting previous builds"
 rm -rf greengrass-build
 rm -rf zip-build
 
@@ -13,7 +13,7 @@ USERNAME=$(whoami)
 echo "Current username: $USERNAME"
 
 # Define the virtual environment directory
-ENV_DIR="/home/$USERNAME/.local/.greengrass-env"
+ENV_DIR="/home/$USERNAME/.local/.greengrassnv"
 
 # Create the virtual environment if it doesn't exist
 if [ ! -d "$ENV_DIR" ]; then
@@ -34,7 +34,7 @@ echo "Upgrading pip in the virtual environment"
 
 
 
-echo -e "\n\n2.Installing AWS Greengrass GDK CLI"
+echo "\n\n2.Installing AWS Greengrass GDK CLI"
 "$ENV_DIR/bin/pip" install git+https://github.com/aws-greengrass/aws-greengrass-gdk-cli.git@v1.6.2
 
 # Echo the installed version of gdk
@@ -45,13 +45,13 @@ echo "Installed GDK version:"
 
 
 # Build the component
-echo -e "\n\3.nBuilding the Greengrass component..."
+echo "\n\3.nBuilding the Greengrass component..."
 "$ENV_DIR/bin/gdk" component build
 
 
 
 # Create deployment and capture the output and status
-echo -e "\n\n4.Creating deployment..."
+echo "\n\n4.Creating deployment..."
 # DEPLOYMENT_OUTPUT=$(sudo /greengrass/v2/bin/greengrass-cli deployment create \
 #   --recipeDir $PWD/greengrass-build/recipes \
 #   --artifactDir $PWD/greengrass-build/artifacts \
@@ -63,7 +63,7 @@ sudo /greengrass/v2/bin/greengrass-cli deployment create \
   --merge "com.example.PythonMqttHello=1.0.0"
 
 
-echo -e "\n\n<<Deployment Submitted ! >>>"
+echo "\n\n<<Deployment Submitted ! >>>"
 
 # # Check if the deployment failed
 # if [ $DEPLOYMENT_STATUS -ne 0 ]; then
