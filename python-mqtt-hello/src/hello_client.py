@@ -13,16 +13,16 @@ class HelloClient:
         self._subscription = None
 
     def subscribe(self):
-        # Create a subscription to the 'hello' topic
-        self._subscription = self._client.new_subscribe_to_iot_core()
-        self._subscription.activate(
-            model.SubscribeToIoTCoreRequest(
-                topic_name="hello", qos=model.QOS.AT_LEAST_ONCE
-            )
-        )
 
         # Handle the subscription response
         try:
+            # Create a subscription to the 'hello' topic
+            self._subscription = self._client.new_subscribe_to_iot_core()
+            self._subscription.activate(
+                model.SubscribeToIoTCoreRequest(
+                    topic_name="hello", qos=model.QOS.AT_LEAST_ONCE
+                )
+            )
             response = self._subscription.get_response().result(timeout=5.0)
             print("::::Successfully subscribed to 'hello' topic.", response)
         except Exception as e:
