@@ -12,9 +12,9 @@ def main():
 
         print(">>>>> About to sub")
         # Subscribe to the 'hello' topic
-        client.subscribe()
+        # client.subscribe()
 
-        times = 5
+        times = 20
         print("Started ::::", datetime.datetime.now(tz=None))
         while times > 0:
             client.tick()
