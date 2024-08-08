@@ -2,15 +2,15 @@ import sys
 import time
 import datetime
 from src.hello_client import HelloClient
-import logging
 
 
 def main():
+    print("\n\n\n::::: MAIN Started")
     try:
         args = sys.argv[1:]
         client = HelloClient(args[0])
 
-        print("")
+        print(">>>>> About to sub")
         # Subscribe to the 'hello' topic
         client.subscribe()
 
@@ -21,7 +21,8 @@ def main():
             time.sleep(5)
             times = times - 1
     except Exception as e:
-        logging.error("\n\n>>>error:::", e)
+        print("ERRORRR :::::: \n\n")
+        print(e)
 
 
 if __name__ == "__main__":
