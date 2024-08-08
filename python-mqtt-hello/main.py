@@ -7,10 +7,12 @@ from src.hello_client import HelloClient
 def main():
     args = sys.argv[1:]
     client = HelloClient(args[0])
+    times = 5
 
-    while True:
+    while times > 0:
         client.tick()
-        time.sleep(1)
+        time.sleep(5)
+        times = times - 1
 
 
 if __name__ == "__main__":
