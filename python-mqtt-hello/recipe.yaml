@@ -13,6 +13,7 @@ ComponentConfiguration:
           policyDescription: "Allows access to publish to all topics."
           operations:
             - "aws.greengrass#PublishToIoTCore"
+            - "aws.greengrass#SubscribeToTopic"
           resources:
             - "*"
 Manifests:
