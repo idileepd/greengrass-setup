@@ -13,7 +13,6 @@ ComponentConfiguration:
           policyDescription: "Allows access to publish to all topics."
           operations:
             - "aws.greengrass#PublishToIoTCore"
-            - "aws.greengrass#SubscribeToTopic"
           resources:
             - "*"
 Manifests:
@@ -24,7 +23,7 @@ Manifests:
         Unarchive: ZIP
 Lifecycle:
   Install: |
-    echo "\n\n\nLifecycle::::: :::::::: INSTALL"
+    echo "Lifecycle::::: :::::::: INSTALL"
     # Fetch the current username
     USERNAME=$(whoami)
     echo "Current username: $USERNAME"
@@ -45,7 +44,7 @@ Lifecycle:
     echo "Installing dependencies from requirements.txt"
     "$ENV_DIR/bin/pip" install -r {artifacts:decompressedPath}/python-mqtt-hello/requirements.txt
   Run: |
-    echo "\n\n\nLifecycle::::: :::::::: RUN"
+    echo "Lifecycle::::: :::::::: RUN"
     # Fetch the current username
     USERNAME=$(whoami)
     echo "Current username: $USERNAME"
