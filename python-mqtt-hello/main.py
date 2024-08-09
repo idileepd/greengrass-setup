@@ -36,7 +36,7 @@ ipc_client = awsiot.greengrasscoreipc.connect()
 
 
 # button 4 callback
-def button4pressed(channel):
+def button4pressed():
     print("button pressed")
     message["timemillis"] = round(time.time() * 1000)
     msgstring = json.dumps(message)
